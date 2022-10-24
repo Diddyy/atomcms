@@ -6,7 +6,7 @@
             @foreach($employees as $employee)
                 <x-content.staff-content-section :badge="$employee->badge" :color="$employee->staff_color">
                     <x-slot:title>
-                        {{ $employee->rank_name }}
+                        {{ $employee->name }}
                     </x-slot:title>
 
                     <x-slot:under-title>

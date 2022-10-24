@@ -2,10 +2,10 @@
 
 <div class="rounded h-24 bg-white border w-full overflow-hidden relative md:mt-0 dark:bg-gray-700 dark:border-gray-900">
     <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold dark:bg-gray-900 dark:text-gray-300">
-        {{ $user->permission->rank_name }}
+        {{ $user->ranks->name }}
     </div>
 
-    <div class="h-[65%] w-full staff-bg" style="background: rgba(0, 0, 0, 0.5) url({{ asset(sprintf('assets/images/%s', $user->permission->staff_background)) }});"></div>
+    <div class="h-[65%] w-full staff-bg" style="background: rgba(0, 0, 0, 0.5) url({{ asset(sprintf('assets/images/%s', $user->ranks->rankDetails->staff_background)) }});"></div>
 
     <div class="absolute top-4 drop-shadow left-1">
         <a href="{{ route('profile.show', $user->username) }}">
@@ -22,6 +22,6 @@
             {{ Str::limit($user->motto, 20) }}
         </p>
 
-        <div class="min-w-[15px] max-w-[15px] min-h-[15px] max-h-[15px] rounded-full mt-2 flex items-start {{ $user->online ? 'bg-green-600' : 'bg-red-600' }}"></div>
+        <div class="min-w-[15px] max-w-[15px] min-h-[15px] max-h-[15px] rounded-full mt-2 flex items-start {{ ($user->online == 'ONLINE') ? 'bg-green-600' : 'bg-red-600' }}"></div>
     </div>
 </div>

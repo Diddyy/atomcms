@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -51,9 +52,9 @@ class User extends Authenticatable
         return $this->currencies->where('type', $type)->first()->amount ?? 0;
     }
 
-    public function permission(): HasOne
+    public function ranks(): HasOne
     {
-        return $this->hasOne(Permission::class, 'id', 'rank');
+        return $this->hasOne(Rank::class, 'id', 'rank');
     }
 
     public function articles(): HasMany
@@ -104,7 +105,7 @@ class User extends Authenticatable
 
     public function ban(): HasOne
     {
-        return $this->hasOne(Ban::class, 'user_id')->where('ban_expire', '>', time());
+        return $this->hasOne(Ban::class, 'user_id')->where('expire_date', '>', Carbon::now());
     }
 
     public function settings(): HasOne

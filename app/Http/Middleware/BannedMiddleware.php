@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\Ban;
 use Closure;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,8 +13,9 @@ class BannedMiddleware
     public function handle(Request $request, Closure $next)
     {
         $visitorIp = $request->ip();
-        $ipBan = Ban::where('ip', '=', $visitorIp)
-            ->where('ban_expire', '>', time())
+        $ipBan = Ban::where('type', '=', 'ip')
+            ->where('ip', '=', $visitorIp)
+            ->where('expire_date', '>', Carbon::now())
             ->orderByDesc('id')
             ->exists();
         $authenticated = Auth::check();
