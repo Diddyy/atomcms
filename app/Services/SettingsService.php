@@ -14,8 +14,8 @@ class SettingsService
         $this->settings = WebsiteSetting::all()->pluck('value', 'key');
     }
 
-    public function getOrDefault(string $settingName, string $default = ''): ?string
+    public function getOrDefault(string $settingName, ?string $default = null): string
     {
-        return (string) $this->settings->get($settingName) ?? $default;
+        return (string)$this->settings->get($settingName, $default);
     }
 }
