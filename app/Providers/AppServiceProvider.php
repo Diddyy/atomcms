@@ -20,9 +20,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Services\ViteService::class
         );
 
-        $this->app->bind(SettingsService::class, function() {
-            return new SettingsService();
-        });
+        $this->app->singleton(
+            SettingsService::class,
+            fn () => new SettingsService()
+        );
     }
 
     /**
