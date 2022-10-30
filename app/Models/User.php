@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Fortify\TwoFactorAuthenticationProvider;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
 
     public $timestamps = false;
 
@@ -138,5 +140,21 @@ class User extends Authenticatable
             ->inRandomOrder()
             ->limit($total)
             ->get();
+    }
+
+    public function confirmTwoFactorAuthentication($code)
+    {
+        $codeIsValid = app(TwoFactorAuthenticationProvider::class)
+            ->verify(decrypt($this->two_factor_secret), $code);
+
+        if (!$codeIsValid) {
+            return false;
+        }
+
+        $this->update([
+            'two_factor_confirmed' => true,
+        ]);
+
+        return true;
     }
 }
