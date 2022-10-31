@@ -12,7 +12,7 @@
                     <div class="absolute bg-white w-6 h-6 -left-1 rotate-45 dark:bg-gray-900"></div>
 
                     <span class="relative">
-                        {{ __(':online :hotel online', ['online' => DB::table('users')->where('online', '1')->count(), 'hotel' => setting('hotel_name')]) }}
+                        {{ __(':online :hotel online', ['online' => DB::table('users')->where('online', 'ONLINE')->count(), 'hotel' => setting('hotel_name')]) }}
                     </span>
                 </div>
             </div>
