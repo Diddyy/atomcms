@@ -136,7 +136,7 @@ class User extends Authenticatable
         return $this->friends()
             ->select(['user_two_id', 'users.id', 'users.username', 'users.look', 'users.motto', 'users.last_online'])
             ->join('users', 'users.id', '=', 'user_two_id')
-            ->where('users.online', '1')
+            ->where('users.online', 'ONLINE')
             ->inRandomOrder()
             ->limit($total)
             ->get();
