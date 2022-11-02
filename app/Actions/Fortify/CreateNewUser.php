@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Carbon\Carbon;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -25,8 +26,8 @@ class CreateNewUser implements CreatesNewUsers
             'username' => $input['username'],
             'mail' => $input['mail'],
             'password' => Hash::make($input['password']),
-            'account_created' => time(),
-            'last_login' => time(),
+            'account_created' => Carbon::createFromTimestamp(-1)->toDateTimeString(),
+            'last_login' => Carbon::createFromTimestamp(-1)->toDateTimeString(),
             'motto' => setting('start_motto'),
             'look' => setting('start_look'),
             'credits' => setting('start_credits'),
