@@ -33,7 +33,7 @@
             <div class="p-2 text-white text-sm font-extralight mt-4 mb-2 rounded" style="background-color: #7289da; text-shadow: rgba(0, 0, 0, 0.17) 0px 2px 1px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.18), inset 0 0 0 2px hsla(0,0%,100%,.18), 0 2px 0 0 rgba(0,0,0,.1);">
                 <div class="flex">
                     <div class="mr-2 self-center"><img src="{{ asset('assets/images/maintenance/discord-logo-white.svg') }}" class="w-24 align-middle"></div>
-                    <div class="leading-tight self-center">Interact with the community and get the latest updates about <span class="font-bold">Habbo.Li</span> on our discord.</div> 
+                    <div class="leading-tight self-center">Interact with the community and get the latest updates about <span class="font-bold">Habbo.Lu</span> on our discord.</div> 
                 </div>
             </div>
         </a>
