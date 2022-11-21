@@ -18,13 +18,13 @@ class HotelApiController extends Controller
     public function onlineUsers($columns = ['username', 'motto', 'look'])
     {
         return new OnlineUsersResource(User::select($columns)
-            ->where('online', '=', '1')
+            ->where('online', '=', 'ONLINE')
             ->inRandomOrder());
     }
 
     public function onlineUserCount($columns = ['username', 'motto', 'look'])
     {
         return new OnlineUserCountResource(User::select($columns)
-            ->where('online', '=', '1'));
+            ->where('online', '=', 'ONLINE'));
     }
 }
