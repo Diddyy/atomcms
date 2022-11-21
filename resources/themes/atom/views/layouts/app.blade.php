@@ -49,7 +49,7 @@
 
                     <x-navigation.theme-mode-switcher />
                     <x-navigation.language-selector>
-                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : 'en' }}.png" alt="">
+                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png" alt="">
                     </x-navigation.language-selector>
                 </div>
             </nav>
@@ -63,6 +63,16 @@
         </div>
 
         <x-footer />
+
+        @if(setting('cms_color_mode') === 'dark')
+            <script>
+                if(localStorage.getItem("theme") === null) {
+                    document.documentElement.classList.add("dark");
+                    localStorage.setItem("theme", 'dark');
+                }
+            </script>
+        @endif
+
         @stack('javascript')
     </body>
 </html>

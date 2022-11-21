@@ -175,6 +175,31 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '0',
                 'comment' => 'The homeroom every new users will be assigned to',
             ],
+            [
+                'key' => 'cms_color_mode',
+                'value' => 'light',
+                'comment' => 'Determines the color mode of the CMS (light = normal, dark = dark mode)',
+            ],
+            [
+                'key' => 'force_staff_2fa',
+                'value' => '0',
+                'comment' => 'If set to 1 every staff will be forced to apply 2FA before being able to visit any other page',
+            ],
+            [
+                'key' => 'website_wordfilter_enabled',
+                'value' => '1',
+                'comment' => 'Determines whether the wordfilter for CMS will be enabled or not',
+            ],
+            [
+                'key' => 'requires_beta_code',
+                'value' => '0',
+                'comment' => 'Determines whether users need a beta code to register or not',
+            ],
+            [
+                'key' => 'disable_registration',
+                'value' => '0',
+                'comment' => 'Determines whether registration is enabled or not',
+            ],
         ];
 
         foreach ($settings as $setting) {
