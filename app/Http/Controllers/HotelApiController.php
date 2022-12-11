@@ -11,8 +11,7 @@ class HotelApiController extends Controller
 {
     public function fetchUser($username, $columns = ['username', 'motto', 'look'])
     {
-        return new UserResource(User::select($columns)
-            ->where('username', '=', $username));
+        return new UserResource(User::select($columns)->where('username', '=', $username));
     }
 
     public function onlineUsers($columns = ['username', 'motto', 'look'])
