@@ -63,10 +63,6 @@
                 <p>
                     {{ __('Every now and then staff applications may open up. Once they do we always make sure to post a news article explaining the process - So make sure you keep an eye out for those in you are interested in joining the :hotel staff team.', ['hotel' => setting('hotel_name')]) }}
                 </p>
-
-                <p>
-                    {!! __('You can occasionally also look at the :startTag Staff application page :endTag which will show you all of our current open positions.', ['startTag' => '<a href="/community/staff-applications" class="underline">', 'endTag' => "</a>"]) !!}
-                </p>
             </div>
         </x-content.content-section>
     </div>
