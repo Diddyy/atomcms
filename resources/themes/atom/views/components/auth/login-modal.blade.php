@@ -9,7 +9,7 @@
             <div class="flex flex-col items-center mb-2">
                 <h2 class="font-semibold text-2xl">{{ __('Hello!') }}</h2>
                 <p class="dark:text-gray-400">
-                    {{ __('There is currently :online users online', ['online' => DB::table('users')->where('online', '1')->count()]) }}
+                    {{ __('There is currently :online users online', ['online' => DB::table('users')->where('online', 'ONLINE')->count()]) }}
                 </p>
             </div>
 
